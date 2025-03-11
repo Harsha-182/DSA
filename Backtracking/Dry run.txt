@@ -1,0 +1,69 @@
+Dry Run for findPaths Function
+We will perform a dry run on the given maze:
+
+let maze = [
+    [1, 0, 0, 0],
+    [1, 1, 0, 1],
+    [0, 1, 0, 0],
+    [1, 1, 1, 1]
+];
+Initial Setup
+
+result = []
+path = []
+
+visited is a 4x4 matrix initialized to false
+Start at (0,0)
+
+Step-by-Step Execution
+
+Step 1: Starting at (0,0)
+visited[0][0] = true
+Try D (Down) → (1,0) (Valid)
+
+Step 2: Move to (1,0)
+visited[1][0] = true
+Try D (Down) → (2,0) (Not Safe ❌)
+Try R (Right) → (1,1) (Valid ✅)
+
+Step 3: Move to (1,1)
+visited[1][1] = true
+Try D (Down) → (2,1) (Valid ✅)
+
+Step 4: Move to (2,1)
+visited[2][1] = true
+Try D (Down) → (3,1) (Valid ✅)
+
+Step 5: Move to (3,1)
+visited[3][1] = true
+Try R (Right) → (3,2) (Valid ✅)
+
+Step 6: Move to (3,2)
+visited[3][2] = true
+Try R (Right) → (3,3) (Valid ✅)
+
+Step 7: Move to (3,3)
+Reached the destination! 🎯
+Add "DRDDRR" to result
+
+Backtracking Begins
+Unmark visited for backtracking and explore other possibilities.
+Since all other paths are blocked or lead back, the algorithm terminates.
+
+Final Output
+["DRDDRR"]
+
+Summary of Moves
+Step	Cell (x, y)	Move Taken
+    1	(0,0)	Start
+    2	(1,0)	D (Down)
+    3	(1,1)	R (Right)
+    4	(2,1)	D (Down)
+    5	(3,1)	D (Down)
+    6	(3,2)	R (Right)
+    7	(3,3)	R (Right) ✅ (End)
+
+Conclusion
+The algorithm finds the path "DRDDRR" from (0,0) to (3,3).
+It explores all possible moves, backtracks when necessary, and avoids revisiting cells.
+The approach efficiently finds all valid paths in a recursive backtracking manner.

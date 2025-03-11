@@ -1,4 +1,8 @@
-// Backtracking - Rate in a maze
+// Backtracking 
+
+//Rat in a maze problem
+//Given a maze, NxN matrix. A rat has to find a path from source to destination. maze[0][0] (left top corner)is the source and maze[N-1][N-1](right bottom corner) is destination. 
+// There are few cells which are blocked, means rat cannot enter into those cells. Rat can move in any direction ( left, right, up and down).
 
 const findPaths = (maze) => {
     let result = [];
