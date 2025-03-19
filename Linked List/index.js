@@ -76,3 +76,84 @@ linked1.printList();
 // Output:
 // 10
 // 20
+
+//Search in the Linked List
+function searchList(target){
+    let temp= this.head;
+    
+    while(temp){
+      if(temp.head === target){
+        return true
+      } else{
+        temp= temp.next
+      }
+    }
+    return false
+}
+
+//Count the number of nodes in the Linked List
+function countNodes(){
+    let temp= this.head;
+    let count= 0;
+    
+    while(temp){
+      count++
+      temp= temp.next
+    }
+    return count
+}
+
+// Input: 
+// 1 2 3 4 5
+// Your Output:
+// 5
+// Expected Output:
+// 5
+
+//Add a node at middle of the Linked List
+class LinkedList{
+    constructor(){
+      this.head = null
+    }
+    
+    insertAtBeginning(data){
+          let newNode = new Node(data);
+          newNode.next = this.head
+          this.head = newNode;
+          return newNode;
+    }
+    
+    insertNodeAtMid(data){
+      let count = 0;
+      let temp = this.head;
+      // console.log("this.head,,,,", temp.next)
+      while(temp){
+        count++
+        temp = temp.next;
+      }
+      
+      let midIndex = Math.floor(count/2);
+      
+      temp = this.head
+      for(let i=0;i<midIndex;i++){
+        temp = temp.next
+      }
+      
+      const newNode = new Node(data)
+      newNode.next = temp;
+      temp.next = newNode
+      console.log( temp)
+    }
+  } 
+  
+  const l1 = new LinkedList()
+  
+  l1.insertAtBeginning(5);
+  l1.insertAtBeginning(10);
+  l1.insertAtBeginning(30)
+  console.log(l1.insertAtBeginning(40))
+  
+  l1.insertNodeAtMid(20)
+
+// Output:
+// Node { head: 5, next: Node { head: 10, next: Node { head: 20, next: Node { head: 30, next: Node { head: 40, next: null } } } } } }
