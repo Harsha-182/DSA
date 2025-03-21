@@ -13,6 +13,7 @@
 // Move prev and current one step forward.
 // After the loop, prev will be the new head of the reversed list.
 
+// (Took 1h 58m to analyse this problem and write the solution at first attempt)
 function reverseList(){
     let prev = null;
     let current = this.head;
