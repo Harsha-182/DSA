@@ -1,0 +1,146 @@
+Step-by-Step Explanation
+1. Initialization Before Loop Starts
+    We have three pointers:
+
+    prev → Initially null
+    current → Initially points to head
+    next → Will temporarily store current.next to avoid losing the reference
+
+    Example: Original Linked List
+        head → 1 → 2 → 3 → 4 → 5 → NULL
+
+    Initially:
+    prev = null, current = 1, next = null
+
+2. First Iteration (current = 1)
+    prev = null   current = 1 → 2 → 3 → 4 → 5 → NULL
+    next = null
+Step-by-Step Execution
+    next = current.next → Store 2
+    next = 2 → 3 → 4 → 5 → NULL
+    current.next = prev → Reverse link (1 → null)
+    prev = current → Move prev to 1
+    prev = 1 → NULL
+    current = next → Move current to 2
+    current = 2 → 3 → 4 → 5 → NULL
+
+3. Second Iteration (current = 2)
+prev = 1 → NULL,  current = 2 → 3 → 4 → 5 → NULL
+
+Step-by-Step Execution
+    next = current.next → Store 3
+    next = 3 → 4 → 5 → NULL
+    current.next = prev → Reverse link (2 → 1 → NULL)
+    prev = current → Move prev to 2
+
+    prev = 2 → 1 → NULL
+    current = next → Move current to 3
+    current = 3 → 4 → 5 → NULL
+
+4. Third Iteration (current = 3)
+    prev = 2 → 1 → NULL,  current = 3 → 4 → 5 → NULL
+
+Step-by-Step Execution
+    next = current.next → Store 4
+    next = 4 → 5 → NULL
+    current.next = prev → Reverse link (3 → 2 → 1 → NULL)
+    3 → 2 → 1 → NULL
+    prev = current → Move prev to 3
+    prev = 3 → 2 → 1 → NULL
+    current = next → Move current to 4
+    current = 4 → 5 → NULL
+    Final Iteration (current = 5)
+    After reversing all links, we reach:
+    5 → 4 → 3 → 2 → 1 → NULL
+    Now, current becomes null, and the loop stops.
+
+Final Step: Update Head
+Since prev now holds the new first node (5), we update the head:
+
+this.head = prev;
+Final Output
+head → 5 → 4 → 3 → 2 → 1 → NULL
+The linked list is now successfully reversed.
+
+Let's take a simple chain of people holding hands instead of a train.
+
+-----------------------------------------------------------------------------------------------------------------------------
+Example: Five Friends Holding Hands
+Imagine five friends (A, B, C, D, E) standing in a line, holding hands in one direction:
+
+A → B → C → D → E → NULL
+(A is the first person, E is the last person, and NULL means no one is after E.)
+
+Now, we want to reverse this chain so that they hold hands in the opposite direction:
+
+E → D → C → B → A → NULL
+
+How Do We Reverse the Chain?
+We will change the direction of hand-holding step by step.
+
+Three Things We Need
+prev (previous friend) → At first, no one is before A, so it's null.
+current (current friend) → Starts with A.
+next (next friend) → Helps us remember the next person before breaking the chain.
+
+Step-by-Step Process
+Step 1: Reverse A's Hand
+        next = B (Remember B before breaking A's hand)
+        A.next = prev (A lets go of B and now points to null)
+        Move prev forward → prev = A
+        Move current forward → current = B
+        Now, the chain looks like this:
+
+A → NULL    B → C → D → E → NULL
+     ↑
+   (prev)
+
+Step 2: Reverse B's Hand
+        next = C (Remember C before breaking B's hand)
+        B.next = prev (B lets go of C and now points to A)
+        Move prev forward → prev = B
+        Move current forward → current = C
+        Now, the chain looks like:
+
+B → A → NULL    C → D → E → NULL
+     ↑
+   (prev)
+
+Step 3: Reverse C's Hand
+        next = D
+        C.next = prev (C now points to B)
+        Move prev forward → prev = C
+        Move current forward → current = D
+        Now, the chain looks like:
+
+C → B → A → NULL    D → E → NULL
+     ↑
+   (prev)
+
+Step 4: Reverse D's Hand
+        next = E
+        D.next = prev (D now points to C)
+        Move prev forward → prev = D
+        Move current forward → current = E
+        Now, the chain looks like:
+
+D → C → B → A → NULL    E → NULL
+     ↑
+   (prev)
+
+Step 5: Reverse E's Hand (Last Step!)
+        next = null (E has no one ahead)
+        E.next = prev (E now points to D)
+        Move prev forward → prev = E
+        Move current forward → current = null (Loop ends!)
+
+Final chain:
+E → D → C → B → A → NULL
+     ↑
+   (prev)  → This is the new **head**
+
+Final Step: Update the Head
+Since prev is now the new first person in the line, we update:
+
+this.head = prev;
+Now, the linked list is completely reversed! ✅
