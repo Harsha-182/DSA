@@ -1,0 +1,31 @@
+What is a Loop in a Linked List?
+A loop (cycle) in a linked list occurs when a node in the list points back to a previous node instead of null, creating an infinite cycle. This means the linked list does not have an end, and traversing it would result in an infinite loop.
+
+Example of a Loop in a Linked List
+Linked List without a loop (No cycle):
+    head → 1 → 2 → 3 → 4 → 5 → null
+The last node (5) points to null, meaning no loop exists.
+Linked List with a loop (Cycle present):
+    head → 1 → 2 → 3 → 4 → 5
+                    ↑      ↓
+                    7 ← 6 ←
+Here, node 5 points back to node 3, creating a cycle.
+
+Why is Loop Detection Important?
+✅ Avoid Infinite Loops – If a cycle exists and you traverse the list normally, it will never end.
+✅ Prevent Memory Leaks – If not detected, cyclic references can lead to memory overflow.
+✅ Used in Algorithms – Cycle detection is commonly used in graph algorithms and network routing.
+
+Detecting a Loop in a Linked List
+Using Floyd’s Cycle Detection Algorithm (Tortoise and Hare)
+This is the most efficient approach.
+
+Use two pointers:
+Slow pointer (slow) moves one step at a time.
+Fast pointer (fast) moves two steps at a time.
+If there is a loop, fast and slow will eventually meet inside the cycle.
+If there is no loop, fast will reach null.
+
+Time and Space Complexity
+✅ Time Complexity: O(N) (Each node is visited at most twice).
+✅ Space Complexity: O(1) (No extra space is used).
